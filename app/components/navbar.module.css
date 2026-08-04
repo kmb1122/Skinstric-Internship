@@ -13,6 +13,7 @@
   font-weight: 600;
   letter-spacing: -.02em;
   line-height: 1.6;
+  font-family: var(--font-roobert);
 }
 
 .nav__left {
@@ -65,9 +66,10 @@
 
 .enter__code__text {
   font-size: clamp(10px, 2px + .625vw, 14px);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -.02em;
   line-height: .6;
+  font-family: var(--font-roobert);
   display: inline-block;
   transform: translateY(0);
 }

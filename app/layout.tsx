@@ -7,27 +7,27 @@ const roobert = localFont({
   src: [
     {
       path: "./fonts/Roobert/RoobertCollectionVF-TRIAL.woff2",
-      weight: "400 900",
+      weight: "400",
       style: "normal",
     },
     {
       path: "./fonts/Roobert/RoobertArabicVF-TRIAL.woff2",
-      weight: "400 900",
+      weight: "400",
       style: "normal",
     },
     {
       path: "./fonts/Roobert/RoobertHebrewCollectionVF-TRIAL.woff2",
-      weight: "400 900",
+      weight: "400",
       style: "normal",
     },
     {
       path: "./fonts/Roobert/RoobertJapaneseVF-TRIAL.woff2",
-      weight: "400 900",
+      weight: "400",
       style: "normal",
     },
     {
       path: "./fonts/Roobert/RoobertKoreanVF-TRIAL.woff2",
-      weight: "400 900",
+      weight: "400",
       style: "normal",
     },
   ],
