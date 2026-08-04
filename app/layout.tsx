@@ -1,15 +1,37 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "./components/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const roobert = localFont({
+  src: [
+    {
+      path: "./fonts/Roobert/RoobertCollectionVF-TRIAL.woff2",
+      weight: "400 900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Roobert/RoobertArabicVF-TRIAL.woff2",
+      weight: "400 900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Roobert/RoobertHebrewCollectionVF-TRIAL.woff2",
+      weight: "400 900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Roobert/RoobertJapaneseVF-TRIAL.woff2",
+      weight: "400 900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Roobert/RoobertKoreanVF-TRIAL.woff2",
+      weight: "400 900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-roobert",
 });
 
 export const metadata: Metadata = {
@@ -19,8 +41,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={roobert.variable}>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

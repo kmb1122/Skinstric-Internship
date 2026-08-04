@@ -1,0 +1,98 @@
+.nav {
+  height: 64px;
+  width: 100%
+}
+
+.nav__wrapper {
+  height: 100%;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(10px, 2px + .625vw, 14px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.6;
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.nav__link {
+  color: #1a1b1c;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.intro {
+  opacity: 0.6;
+  margin-left: 26px;
+}
+
+.bracket {
+  font-weight: 300;
+  font-size: 12px;
+  white-space: pre;
+}
+
+.enter__code {
+  height: 32px;
+  padding: 8px 16px;
+  background-color: #1a1b1c;
+  color: #fcfcfc;
+  cursor: pointer;
+  border: 1px solid transparent;
+  overflow: hidden; /* important */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.enter__code:hover {
+  background-color: #fcfcfc;
+  color: #1a1b1c;
+}
+
+.enter__code:active {
+  border-color: #1a1b1c;
+}
+
+.enter__code__text {
+  font-size: clamp(10px, 2px + .625vw, 14px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: .6;
+  display: inline-block;
+  transform: translateY(0);
+}
+
+/* Hover triggers the circular animation */
+.enter__code:hover .enter__code__text {
+  animation: circleText 0.45s ease forwards;
+}
+
+/* Keyframes for circular motion */
+@keyframes circleText {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
