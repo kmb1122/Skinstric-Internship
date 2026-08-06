@@ -2,7 +2,8 @@
   position: fixed;
   top: 0;
   height: 64px;
-  width: 100%
+  width: 100%;
+  z-index: 100;
 }
 
 .nav__wrapper {
@@ -50,7 +51,7 @@
   color: #fcfcfc;
   cursor: pointer;
   border: 1px solid transparent;
-  overflow: hidden; /* important */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,12 +77,10 @@
   transform: translateY(0);
 }
 
-/* Hover triggers the circular animation */
 .enter__code:hover .enter__code__text {
   animation: circleText 0.45s ease forwards;
 }
 
-/* Keyframes for circular motion */
 @keyframes circleText {
   0% {
     transform: translateY(0);

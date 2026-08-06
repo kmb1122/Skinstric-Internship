@@ -45,11 +45,11 @@
 }
 
 .rhombus__left {
-  left: calc(-45vh / 2);   /* half off-screen */
+  left: calc(-45vh / 2);
 }
 
 .rhombus__right {
-  right: calc(-45vh / 2);  /* half off-screen */
+  right: calc(-45vh / 2);
 }
 
 .rhombus__inner,
@@ -63,21 +63,19 @@
   transform: translate(-50%, -50%) rotate(45deg);
   box-sizing: border-box;
   transition: transform 0.25s ease, opacity 0.25s ease;
+  border: 2px dotted #A0A4AB;
 }
 
 .rhombus__inner {
   opacity: 1;
-  border: 2px dotted #A0A4AB;
 }
 
 .rhombus__middle {
   opacity: 0.6;
-  border: 2px dotted #A0A4AB;
 }
 
 .rhombus__outer {
   opacity: 0.3;
-  border: 2px dotted #A0A4AB;
 }
 
 .side__btn:hover + .rhombus .rhombus__middle {

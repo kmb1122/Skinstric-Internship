@@ -3,29 +3,20 @@
 import style from "./page.module.css";
 import { gsap } from "gsap";
 import { useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const leftWrapperRef = useRef<HTMLDivElement | null>(null);
   const rightWrapperRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const titleWidth = titleRef.current?.offsetWidth ?? 0;
-
-  useEffect(() => {
-    if (!titleRef.current) return;
-
-    gsap.from(titleRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-  }, []);
+  const router = useRouter();
 
   useEffect(() => {
     gsap.fromTo(
       titleRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out", delay: .8 }
     );
   }, []);
 
@@ -87,6 +78,7 @@ export default function Home() {
         <div ref={rightWrapperRef} className={style.button__wrapper__right}>
           <button
             className={`${style.side__btn} ${style.side__btn__right}`}
+            onClick={() => router.push("/testing")}
             onMouseEnter={() => {
               const viewportWidth = window.innerWidth;
               const titleWidth = titleRef.current!.offsetWidth;
