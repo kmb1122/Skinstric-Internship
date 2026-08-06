@@ -31,112 +31,111 @@ export default function Home() {
 
   return (
     <div className={style.page}>
-      <div className={style.mobileFlow}>
-        <main className={style.main}>
-          <div ref={leftWrapperRef} className={style.button__wrapper__left}>
-            <button
-              className={`${style.side__btn} ${style.side__btn__left}`}
-              onMouseEnter={() => {
-                const viewportWidth = window.innerWidth;
-                const titleWidth = titleRef.current!.offsetWidth;
-                const distance = (viewportWidth / 2) - (titleWidth / 2) - 32;
+      <main className={style.main}>
 
-                gsap.to(rightWrapperRef.current, { opacity: 0, duration: 0.3 });
+        <div ref={leftWrapperRef} className={style.button__wrapper__left}>
+          <button
+            className={`${style.side__btn} ${style.side__btn__left}`}
+            onMouseEnter={() => {
+              const viewportWidth = window.innerWidth;
+              const titleWidth = titleRef.current!.offsetWidth;
+              const distance = (viewportWidth / 2) - (titleWidth / 2) - 32;
 
-                gsap.to(titleRef.current, {
-                  x: distance,              
-                  duration: 0.8,
-                  ease: "power2.out",
-                  onStart: () => {
-                    titleRef.current!.classList.add(style.titleRight);
-                  }
-                });
-              }}
+              gsap.to(rightWrapperRef.current, { opacity: 0, duration: 0.3 });
 
-              onMouseLeave={() => {
-                gsap.to(rightWrapperRef.current, { opacity: 1, duration: 0.3 });
+              gsap.to(titleRef.current, {
+                x: distance,              
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                  titleRef.current!.classList.add(style.titleRight);
+                }
+              });
+            }}
 
-                gsap.to(titleRef.current, {
-                  x: 0,
-                  duration: 0.8,
-                  ease: "power2.out",
-                  onStart: () => {
-                    titleRef.current!.classList.remove(style.titleRight);
-                  }
-                });
-              }}
-            >
-              <div className={`${style["square"]} ${style["square__left"]}`}>
-                <div className={style.square__inner}></div>
-                <div className={style.square__outer}></div>
-                <div className={`${style["triangle"]} ${style["triangle__left"]}`}/>
-              </div>
-              <p className={`${style["side__btn__text"]} ${style["side__btn__text__left"]}`}>
-                DICOVER A.I.
-              </p>
-            </button>
-            <div className={`${style["rhombus"]} ${style["rhombus__left"]}`}>
-              <div className={style.rhombus__inner}></div>
-              <div className={style.rhombus__middle}></div>
-              <div className={style.rhombus__outer}></div>
+            onMouseLeave={() => {
+              gsap.to(rightWrapperRef.current, { opacity: 1, duration: 0.3 });
+
+              gsap.to(titleRef.current, {
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                  titleRef.current!.classList.remove(style.titleRight);
+                }
+              });
+            }}
+          >
+            <div className={`${style["square"]} ${style["square__left"]}`}>
+              <div className={style.square__inner}></div>
+              <div className={style.square__outer}></div>
+              <div className={`${style["triangle"]} ${style["triangle__left"]}`}/>
             </div>
+            <p className={`${style["side__btn__text"]} ${style["side__btn__text__left"]}`}>
+              DICOVER A.I.
+            </p>
+          </button>
+          <div className={`${style["rhombus"]} ${style["rhombus__left"]}`}>
+            <div className={style.rhombus__inner}></div>
+            <div className={style.rhombus__middle}></div>
+            <div className={style.rhombus__outer}></div>
           </div>
+        </div>
 
-          <h1 ref={titleRef} className={style.title}>Sophisticated skincare</h1>
+        <h1 ref={titleRef} className={style.title}>Sophisticated skincare</h1>
 
-          <div ref={rightWrapperRef} className={style.button__wrapper__right}>
-            <button
-              className={`${style.side__btn} ${style.side__btn__right}`}
-              onMouseEnter={() => {
-                const viewportWidth = window.innerWidth;
-                const titleWidth = titleRef.current!.offsetWidth;
-                const distance = (viewportWidth / 2) - (titleWidth / 2) - 32;
+        <div ref={rightWrapperRef} className={style.button__wrapper__right}>
+          <button
+            className={`${style.side__btn} ${style.side__btn__right}`}
+            onMouseEnter={() => {
+              const viewportWidth = window.innerWidth;
+              const titleWidth = titleRef.current!.offsetWidth;
+              const distance = (viewportWidth / 2) - (titleWidth / 2) - 32;
 
-                gsap.to(leftWrapperRef.current, { opacity: 0, duration: 0.3 });
+              gsap.to(leftWrapperRef.current, { opacity: 0, duration: 0.3 });
 
-                gsap.to(titleRef.current, {
-                  x: -distance,     
-                  duration: 0.8,
-                  ease: "power2.out",
-                  onStart: () => {
-                    titleRef.current!.classList.add(style.titleLeft);
-                  }
-                });
-              }}
+              gsap.to(titleRef.current, {
+                x: -distance,     
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                  titleRef.current!.classList.add(style.titleLeft);
+                }
+              });
+            }}
 
-              onMouseLeave={() => {
-                gsap.to(leftWrapperRef.current, { opacity: 1, duration: 0.3 });
+            onMouseLeave={() => {
+              gsap.to(leftWrapperRef.current, { opacity: 1, duration: 0.3 });
 
-                gsap.to(titleRef.current, {
-                  x: 0,
-                  duration: 0.8,
-                  ease: "power2.out",
-                  onStart: () => {
-                    titleRef.current!.classList.remove(style.titleLeft);
-                  }
-                });
-              }}
-            >
-              <div className={`${style["square"]} ${style["square__right"]}`}>
-                <div className={style.square__inner}></div>
-                <div className={style.square__outer}></div>
-                <div className={`${style["triangle"]} ${style["triangle__right"]}`}/>
-              </div>
-              <p className={`${style["side__btn__text"]} ${style["side__btn__text__right"]}`}>
-                TAKE TEST
-              </p>
-            </button>
-            <div className={`${style["rhombus"]} ${style["rhombus__right"]}`}>
-              <div className={style.rhombus__inner}></div>
-              <div className={style.rhombus__middle}></div>
-              <div className={style.rhombus__outer}></div>
+              gsap.to(titleRef.current, {
+                x: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                  titleRef.current!.classList.remove(style.titleLeft);
+                }
+              });
+            }}
+          >
+            <div className={`${style["square"]} ${style["square__right"]}`}>
+              <div className={style.square__inner}></div>
+              <div className={style.square__outer}></div>
+              <div className={`${style["triangle"]} ${style["triangle__right"]}`}/>
             </div>
+            <p className={`${style["side__btn__text"]} ${style["side__btn__text__right"]}`}>
+              TAKE TEST
+            </p>
+          </button>
+          <div className={`${style["rhombus"]} ${style["rhombus__right"]}`}>
+            <div className={style.rhombus__inner}></div>
+            <div className={style.rhombus__middle}></div>
+            <div className={style.rhombus__outer}></div>
           </div>
+        </div>
 
-        </main>
+      </main>
 
-        <p className={style.description}>SKINSTRIC DEVELOPED AND A.I. THAT CREATES A HIGHLY-PERSONALISED ROUTINE TAILORED TO WHAT YOUR SKIN NEEDS.</p>
-      </div>
+      <p className={style.description}>SKINSTRIC DEVELOPED AND A.I. THAT CREATES A HIGHLY-PERSONALISED ROUTINE TAILORED TO WHAT YOUR SKIN NEEDS.</p>
     </div>
   );
 }

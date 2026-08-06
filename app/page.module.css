@@ -125,6 +125,11 @@
   position: relative;
   width: 44px;
   height: 44px;
+  transition: transform 0.25s ease;
+}
+
+.side__btn:active .square {
+  transform: scale(.9);
 }
 
 .square__inner, 
@@ -221,33 +226,19 @@
 
 @media (max-width: 1020px) {
   .page {
-    width: 100vw;      /* full viewport width */
-    max-width: none;   /* kill any max-width from base */
-    margin: 0;         /* kill centering */
-    padding: 0;     /* kill horizontal padding */
-  }
-
-  .mobile-flow {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 24px;
-    position: relative;
-    z-index: 2;
   }
 
   .main {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding-top: 36px;
     position: relative;
-    display: block;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 120px;
+    padding-top: 24px;
   }
 
   .title  {
@@ -256,13 +247,13 @@
     text-align: center;
     margin: 0;
     z-index: 1;
-    order: 1;
   }
 
   .description {
-    position: static;    
-    margin-top: -8px;
-    order: 2;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
     font-size: clamp(16px, 2px + .625vw, 18px);
     font-weight: 600;
     letter-spacing: -.02em;
@@ -290,8 +281,6 @@
     transform: none;
     top: auto;
     right: auto;
-    margin-top: 24px;
-    z-index: 2;
   }
 
   .rhombus__left {
@@ -333,7 +322,8 @@
 
 @media (max-width: 600px) {
   .main {
-    gap: 16px;
+    gap: 80px;
+    padding-top: 56px;
   }
 
   .title {
