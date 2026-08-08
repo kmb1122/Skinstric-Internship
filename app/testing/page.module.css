@@ -237,3 +237,17 @@ input::placeholder {
   color: #1a1b1c;
   margin-top: 16px;
 }
+
+@media (max-width: 770px) {
+  .rhombus {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+
+  .side__btn {
+    gap: 4px;
+  }
+
+  .side__btn__text {
+    font-size: 12px;
+  }
+}

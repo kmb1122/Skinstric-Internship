@@ -52,7 +52,7 @@ export default function Testing() {
     if (status === "success" && proceedRef.current) {
       gsap.fromTo(
         proceedRef.current,
-        { x: 200, opacity: 0 },
+        { x: -200, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
       );
     }
