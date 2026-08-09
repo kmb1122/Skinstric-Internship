@@ -52,7 +52,7 @@ export default function Testing() {
     if (status === "success" && proceedRef.current) {
       gsap.fromTo(
         proceedRef.current,
-        { x: -200, opacity: 0 },
+        { x: 200, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
       );
     }
@@ -93,7 +93,7 @@ export default function Testing() {
   return (
     <section className={style.testing}>
               {/* Rhombus */}
-        <div className={`${style["rhombus"]} ${style["rhombus__left"]}`}>
+        <div className={style.rhombus}>
           <svg ref={innerRef} className={style.rhombus__inner} width="604" height="604" viewBox="0 0 604 604" fill="none">
             <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
           </svg>

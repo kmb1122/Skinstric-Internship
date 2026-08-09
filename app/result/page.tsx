@@ -94,6 +94,16 @@ export default function Result() {
 
     return () => ctx.revert();
   }, []);
+
+  useEffect(() => {
+    if (status === "success" && proceedRef.current) {
+      gsap.fromTo(
+        proceedRef.current,
+        { x: 200, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+      );
+    }
+  }, [status]);
   
   const handleFileSelect = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -158,7 +168,7 @@ export default function Result() {
 
       <div className={style.page__middle}>
       
-        <div className={`${style.preparing} ${status !== "preparing" ? style.hidden : ""}`}>
+        <div className={`${style.analysis__state} ${status !== "preparing" && status !== "success" ? style.hidden : ""}`}>
           <div className={style.rhombus3}>
             <svg ref={innerRef3} className={style.rhombus__inner3} width="604" height="604" viewBox="0 0 604 604" fill="none">
               <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
@@ -173,17 +183,24 @@ export default function Result() {
             </svg>
           </div>
 
-          <p>PREPARING YOUR ANALYSIS</p>
-          <div className={style.dots}>
-            <span>.</span>
-            <span>.</span>
-            <span>.</span>
-          </div>
-        </div>
+          {status === "preparing" && (
+            <>
+              <p>PREPARING YOUR ANALYSIS</p>
 
-        <p className={`${style.success} ${status !== "success" ? style.hidden : ""}`}>
-          Thank you! Proceed to the next step
-        </p>
+              <div className={style.dots}>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+              </div>
+            </>
+          )}
+
+          {status === "success" && (
+            <p className={style.success}>
+              Thank you! Proceed to the next step.
+            </p>
+          )}
+        </div>
 
         <div className={`${style["scan"]} ${style["camera"]}`}>
           <div className={`${style["rhombus"]} ${style["rhombus__camera"]}`}>
@@ -285,7 +302,7 @@ export default function Result() {
         <button
           ref={proceedRef}
           className={`${style.side__btn} ${style.side__btn__right}`}
-          onClick={() => router.push("/result")}
+          onClick={() => router.push("/select")}
         >
           <div className={`${style["square"]} ${style["square__right"]}`}>
             <div className={style.square__inner}></div>
