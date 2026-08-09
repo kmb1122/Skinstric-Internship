@@ -1,25 +1,18 @@
 .result {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 32px;
+  width: 100%;
+  padding: 0 32px;
   position: relative;
-}
-
-.step {
-  font-size: clamp(12px, 2px + .625vw, 14px);
-  font-weight: 600;
-  letter-spacing: -.02em;
-  line-height: 1.6;
-  color: #1a1b1c;
-  margin-top: 60px;
+  box-sizing: border-box;
 }
 
 /* PREVIEW BOX */
 .preview__wrapper {
   position: absolute;
-  right: 0;
+  right: 32px;
   top: 72px;
   display: flex;
   flex-direction: column;
@@ -45,13 +38,31 @@
   object-fit: cover;
 }
 
+/* Step */
+.step {
+  font-size: clamp(12px, 2px + .625vw, 14px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.6;
+  color: #1a1b1c;
+  margin-top: 60px;
+  text-align: left;
+  width: 100%;
+}
+
 /* Page Middle */
 .page__middle {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around; /* matches screenshot spacing */
+  justify-content: center;
   position: relative;
+}
+
+.result.idle .page__middle {
+  justify-content: space-around;
 }
 
 /* SCAN BLOCKS */
@@ -137,6 +148,74 @@
 
 .scan__btn:active {
   transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* Preparing state */
+.result.preparing .scan,
+.result.success .scan {
+  display: none;
+}
+
+.preparing {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.rhombus3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 764px;
+  height: 764px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.rhombus3 svg {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dots span {
+  animation: bounce 0.6s infinite alternate;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Success */
+.success {
+  position: absolute;
+  top: calc(50% + 180px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* FOOTER */
@@ -241,89 +320,6 @@
   color: #1A1B1C;
 }
 
-/* Preparing state */
-
-.rhombus3 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.rhombus3 svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
-}
-
-.rhombus3 svg {
-  transition: transform 0.25s ease;
-}
-
-.result.preparing .page__middle {
-  justify-content: center;
-}
-
-.result.preparing .step {
-  position: absolute;
-  top: 60px;
-}
-
-.result.preparing .scan,
-.result.success .scan {
-  display: none;
-}
-
-.result.preparing .preparing {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-}
-
-.preparing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #1a1b1c;
-}
-
-.dots {
-  display: flex;
-  gap: 4px;
-}
-
-.dots span {
-  animation: bounce 0.6s infinite alternate;
-  font-size: 24px;
-  line-height: 24px;
-}
-
-.dots span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.dots span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.success {
-  position: absolute;
-  top: calc(50% + 180px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18px;
-  font-weight: 500;
-}
-
 .hidden {
   display: none;
 }
@@ -342,6 +338,7 @@
   .page__middle {
     flex-direction: column;
     justify-content: center;
+    padding-top: 48px;
   }
 
   .scan {
@@ -391,5 +388,9 @@
 
   .side__btn__text {
     font-size: 12px;
+  }
+
+  .rhombus3 {
+    transform: translate(-50%, -50%) scale(0.7);
   }
 }

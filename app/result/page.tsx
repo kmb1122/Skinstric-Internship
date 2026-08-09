@@ -157,22 +157,22 @@ export default function Result() {
       </div>
 
       <div className={style.page__middle}>
-
+      
         <div className={`${style.preparing} ${status !== "preparing" ? style.hidden : ""}`}>
-          <svg ref={innerRef3} className={style.rhombus__inner3} width="604" height="604" viewBox="0 0 604 604" fill="none">
-            <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
-          </svg>
+          <div className={style.rhombus3}>
+            <svg ref={innerRef3} className={style.rhombus__inner3} width="604" height="604" viewBox="0 0 604 604" fill="none">
+              <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
+            </svg>
 
-          <svg ref={middleRef3} className={style.rhombus__middle3} width="684" height="684" viewBox="0 0 684 684" fill="none">
-            <path opacity="0.6" d="M342 1L683 342L342 683L1 342L342 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
-          </svg>
+            <svg ref={middleRef3} className={style.rhombus__middle3} width="684" height="684" viewBox="0 0 684 684" fill="none">
+              <path opacity="0.6" d="M342 1L683 342L342 683L1 342L342 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
+            </svg>
 
-          <svg ref={outerRef3} className={style.rhombus__outer3} width="764" height="764" viewBox="0 0 764 764" fill="none">
-            <path opacity="0.3" d="M382 1L763 382L382 763L1 382L382 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
-          </svg>
-        </div>
+            <svg ref={outerRef3} className={style.rhombus__outer3} width="764" height="764" viewBox="0 0 764 764" fill="none">
+              <path opacity="0.3" d="M382 1L763 382L382 763L1 382L382 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
+            </svg>
+          </div>
 
-        <div className={`${style.preparing} ${status !== "preparing" ? style.hidden : ""}`}>
           <p>PREPARING YOUR ANALYSIS</p>
           <div className={style.dots}>
             <span>.</span>

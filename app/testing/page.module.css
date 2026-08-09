@@ -79,10 +79,6 @@ input::placeholder {
   transform-origin: center center;
 }
 
-.rhombus svg {
-  transition: transform 0.25s ease;
-}
-
 .footer {
   width: 100%;
   padding-bottom: 32px;
