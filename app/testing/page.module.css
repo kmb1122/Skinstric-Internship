@@ -77,8 +77,10 @@ input::placeholder {
   pointer-events: none;
   transform: translate(-50%, -50%);
   transform-origin: center center;
+  transition: transform 0.25s ease;
 }
 
+/* Footer */
 .footer {
   width: 100%;
   padding-bottom: 32px;
@@ -193,6 +195,7 @@ input::placeholder {
   color: #1A1B1C;
 }
 
+/* Processing State */
 .processing {
   display: flex;
   flex-direction: column;
@@ -234,7 +237,7 @@ input::placeholder {
   margin-top: 16px;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 768px) {
   .rhombus {
     transform: translate(-50%, -50%) scale(0.7);
   }

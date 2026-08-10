@@ -319,7 +319,7 @@
   to   { transform: translateY(-6px); }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 768px) {
   .preview__container {
     width: 96px;
     height: 96px;

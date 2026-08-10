@@ -1,0 +1,292 @@
+.select {
+  height: 100vh;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  padding: 0 32px;
+  position: relative;
+}
+
+.step {
+  font-size: clamp(16px, 2px + .625vw, 14px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.6;
+  color: #1a1b1c;
+  width: 100%;
+  text-align: left;
+  margin-top: 60px;
+}
+
+.step__description {
+  font-size: clamp(15px, 2px + .625vw, 14px);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.6;
+  color: #1a1b1c;
+  width: 100%;
+  text-align: left;
+  margin-top: 8px;
+}
+
+/* Page Middle */
+.page__middle {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btns__wrapper {
+  position: relative;
+  width: 45vh;
+  height: 45vh;
+  margin-bottom: 48px;
+}
+
+.rhombus__inner, .rhombus__middle, .rhombus__outer {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.btn__1:hover ~ .rhombus__inner {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.btn__1:hover ~ .rhombus__middle {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.btn__1:hover ~ .rhombus__outer {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.btn__2:hover ~ .rhombus__inner {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.btn__3:hover ~ .rhombus__middle {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.btn__4:hover ~ .rhombus__outer {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.btn {
+  position: absolute;
+  transform: rotate(45deg);
+  width: 40%;
+  height: 40%;
+  background-color: #F3F3F4;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  filter: brightness(0.7)
+}
+
+.btn span {
+  transform: rotate(-45deg);
+  letter-spacing: -.02em;
+  line-height: 1.6;
+  font-size: clamp(16px, 2px + .625vw, 14px);
+  font-weight: 500;
+  text-shadow: 0 0 0.7px currentColor;
+  color: #1a1b1c;
+}
+
+/* Top */
+.btn__1 {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  background-color: #E1E1E2;
+  transition: all 0.3s ease;
+}
+
+.btn__1:hover {
+  transform: translateX(-50%) rotate(45deg) scale(1.1);
+}
+
+.btn__1:hover span {
+    transform: rotate(-45deg);
+}
+
+.btn__1:active {
+  transform: rotate(-45deg) scale(0.9);
+}
+
+.btn__2, .btn__3, .btn__4 {
+  position: absolute;
+  background-color: #F3F3F4;
+  cursor: not-allowed;
+} 
+
+/* Left */
+.btn__2 {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Bottom */
+.btn__3 {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* Right */
+.btn__4 {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side__btn {
+  position: relative;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  height: 44px;
+  transition: 0.25s ease;
+  z-index: 9999;
+}
+
+.side__btn__right {
+  flex-direction: row-reverse;
+}
+
+.side__btn__right:hover {
+  cursor: pointer;
+}
+
+.side__btn__left:hover {
+  cursor: pointer;
+}
+
+.square {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  transition: transform 0.25s ease;
+}
+
+.side__btn:active .square {
+  transform: scale(.9);
+}
+
+.square__inner, 
+.square__outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-sizing: border-box;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.square__outer {
+  border: 1px solid #1A1B1C;
+}
+
+.square__inner {
+  border: 1px dashed #1A1B1C;
+  opacity: 0;
+}
+
+.side__btn:hover .square__outer {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
+  border-width: 1.5px;
+}
+
+.side__btn:hover .square__inner {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
+}
+
+.side__btn:hover {
+    gap: 24px;
+}
+
+.square__inner,
+.side__btn__text {
+  transition: opacity 0.25s ease;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #1A1B1C;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle__left {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.triangle__right {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.side__btn__text {
+  height: 16px;
+  font-family: var(--font-roobert);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  color: #1A1B1C;
+}
+
+@media (max-width: 768px) {
+  .side__btn {
+    gap: 4px;
+  }
+
+  .side__btn__text {
+    font-size: 12px;
+  }
+}
