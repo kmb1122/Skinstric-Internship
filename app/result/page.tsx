@@ -141,6 +141,7 @@ export default function Result() {
 
         const data = await response.json();
         console.log("API response:", data);
+        sessionStorage.setItem("skinstric-analysis", JSON.stringify(data));
 
         // Switch UI to success
         setStatus("success");
@@ -302,7 +303,10 @@ export default function Result() {
         <button
           ref={proceedRef}
           className={`${style.side__btn} ${style.side__btn__right}`}
-          onClick={() => router.push("/select")}
+          onClick={() =>{
+            router.push("/select")
+          }}
+          
         >
           <div className={`${style["square"]} ${style["square__right"]}`}>
             <div className={style.square__inner}></div>

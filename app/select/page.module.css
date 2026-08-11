@@ -132,11 +132,11 @@
 }
 
 .btn__1:hover span {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .btn__1:active {
-  transform: rotate(-45deg) scale(0.9);
+  transform: translateX(-50%) rotate(-45deg) scale(0.9);
 }
 
 .btn__2, .btn__3, .btn__4 {
@@ -281,12 +281,24 @@
   color: #1A1B1C;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .side__btn {
     gap: 4px;
   }
 
   .side__btn__text {
     font-size: 12px;
+  }
+
+  .step {
+    font-size: clamp(12px, 2px + .625vw, 10px);
+  }
+
+  .step__description {
+    font-size: clamp(11px, 2px + .625vw, 10px);
+  }
+
+  .btn span {
+     font-size: clamp(12px, 2px + .625vw, 10px);
   }
 }
