@@ -17,7 +17,6 @@
   color: #1a1b1c;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .step {
@@ -35,7 +34,6 @@
   font-size: clamp(15px, 2px + .625vw, 14px);
   font-weight: 400;
   letter-spacing: -.02em;
-  text-transform: uppercase;
 }
 
 
@@ -44,17 +42,12 @@
   display: grid;
   grid-template-columns: 168px minmax(0, 1fr) 354px;
   gap: 20px;
-
   width: 100%;
   min-height: 520px;
-
-  margin-top: 28px;
+  margin: 28px 0;
 }
 
-/* =========================================
-   LEFT COLUMN
-========================================= */
-
+/* Left Column */
 .summary__left {
   display: flex;
   flex-direction: column;
@@ -63,38 +56,30 @@
 
 .summary__tab {
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   width: 100%;
   min-height: 118px;
-
   padding: 20px 16px;
-
   border: 0;
-  border-top: 1px solid #191919;
-
-  background: #f1f1f3;
-
-  color: #111;
+  border-top: 1px solid #1a1b1c;
+  background: #f3f3f4;
+  color: #1a1b1c;
   text-align: left;
-
   cursor: pointer;
-
   transition:
     background-color 180ms ease,
     color 180ms ease;
 }
 
 .summary__tab:hover {
-  background: #e5e5e7;
+  background: #f3f3f4;
 }
 
 .summary__tab.active {
   background: #1b1c1c;
-  color: #fff;
+  color: #f3f3f4;
 }
 
 .summary__tabLabel {
@@ -110,40 +95,32 @@
 }
 
 
-/* =========================================
-   CENTER COLUMN
-========================================= */
+/* Center Column */
 
 .summary__middle {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-width: 0;
   min-height: 520px;
-
-  background: #f1f1f3;
+  background: #f3f3f4;
+  border-top: 1px solid #1a1b1c;
 }
 
 .summary__prediction {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
 }
 
 .summary__title {
   position: absolute;
-  top: 32px;
-  left: 34px;
-
+  top: 24px;
+  left: 24px;
   margin: 0;
-
-  color: #1a1a1a;
-
+  color: #1a1b1c;
   font-size: clamp(28px, 3vw, 48px);
   font-weight: 400;
   line-height: 1;
@@ -151,11 +128,11 @@
 }
 
 .summary__circle {
-  position: relative;
-
-  width: min(470px, 72%);
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: min(400px, 55%);
   aspect-ratio: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,78 +141,64 @@
 .summary__circleSvg {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   transform: rotate(-90deg);
 }
 
 .summary__circleTrack,
 .summary__circleProgress {
   fill: none;
-
   cx: 110;
   cy: 110;
   r: 86;
-
   stroke-width: 3;
 }
 
 .summary__circleTrack {
-  stroke: #d2d2d2;
+  stroke: #8b8d8f;
 }
 
 .summary__circleProgress {
-  stroke: #171717;
-
+  fill: none;
+  stroke: #1a1b1c;
   stroke-linecap: butt;
-
-  stroke-dasharray: 100 100;
+  stroke-dasharray: 100;
   stroke-dashoffset: 100;
 }
 
 .summary__circleCenter {
   position: relative;
   z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .summary__circleCenter span {
-  color: #171717;
-
+  color: #1a1b1c;
   font-size: clamp(42px, 5vw, 64px);
   font-weight: 300;
   line-height: 1;
-
   letter-spacing: -0.05em;
 }
 
 
-/* =========================================
-   RIGHT COLUMN
-========================================= */
+/* Right Column */
 
 .summary__right {
   min-height: 520px;
-
-  padding: 24px 20px;
-
-  background: #f1f1f3;
+  padding: 20px 20px;
+  background: #f3f3f4;
+  border-top: 1px solid #1a1b1c;
 }
 
 .summary__rightHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   margin-bottom: 18px;
-
-  color: #171717;
-
+  color: #1a1b1c;
   font-size: 18px;
   font-weight: 500;
   line-height: 1;
@@ -244,10 +207,8 @@
 .summary__list {
   display: flex;
   flex-direction: column;
-
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
@@ -260,28 +221,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
-  min-height: 60px;
-
+  min-height: 48px;
   padding: 0 12px;
-
   border: 0;
-
   background: transparent;
-
-  color: #111;
+  color: #1a1b1c;
   text-align: left;
-
   cursor: pointer;
-
   transition:
     background-color 150ms ease,
     color 150ms ease;
 }
 
 .summary__listItem:hover {
-  background: #e4e4e6;
+  background: #f3f3f4;
 }
 
 .summary__listItem.selected {
@@ -293,25 +247,37 @@
   display: flex;
   align-items: center;
   gap: 14px;
-
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1;
 }
 
 .summary__listValue {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1;
 }
 
 .summary__diamond {
-  width: 11px;
-  height: 11px;
-
-  flex: 0 0 11px;
-
+  position: relative;
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
   border: 2px solid currentColor;
-
   transform: rotate(45deg);
+}
+
+.summary__subDiamond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: #f3f3f4;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 150ms ease;
+}
+
+.summary__listItem.selected .summary__subDiamond {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Footer */
@@ -460,6 +426,17 @@
 }
 
 @media (max-width: 768px) {
+  .summary {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    padding: 0 16px;
+  }
+
+  .step__title {
+    font-size: 36px;
+  }
+
   .page__middle {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -475,7 +452,7 @@
   }
 
   .summary__middle {
-    min-height: 430px;
+    min-height: 500px;
   }
 
   .summary__title {
@@ -490,5 +467,17 @@
 
   .summary__right {
     min-height: auto;
+  }
+
+  .footer__text {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .side__btn {
+    gap: 4px;
+  }
+  .side__btn__text {
+    font-size: 14px;
   }
 }

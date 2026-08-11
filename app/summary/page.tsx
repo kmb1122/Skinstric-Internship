@@ -90,7 +90,7 @@ function parseAgeLabel(label: string): number {
 
 function formatPrediction(tab: Tab, label: string): string {
   if (tab === "age") {
-    return label.includes("y.o.") ? label : `${label} y.o.`;
+    return label.includes("") ? label : `${label}`;
   }
 
   return label;
@@ -110,9 +110,7 @@ export default function Summary() {
 
   const circleRef = useRef<SVGCircleElement | null>(null);
 
-  /*
-   * Load analysis data
-   */
+  /* Load analysis data */
   useEffect(() => {
     const storedAnalysis = sessionStorage.getItem("skinstric-analysis");
 
@@ -137,18 +135,14 @@ export default function Summary() {
     }
   }, []);
 
-  /*
-   * Get the currently active result
-   */
+  /* Get the currently active result */
   const activeResult = useMemo<CategoryResult | null>(() => {
     if (!data) return null;
 
     return data[activeTab];
   }, [data, activeTab]);
 
-  /*
-   * Sort the confidence list
-   */
+  /* Sort the confidence list */
   const sortedBreakdown = useMemo<BreakdownItem[]>(() => {
     if (!activeResult) return [];
 
@@ -167,9 +161,7 @@ export default function Summary() {
     return breakdown;
   }, [activeResult, activeTab]);
 
-  /*
-   * Currently selected confidence
-   */
+  /* Currently selected confidence */
   const selectedConfidence = useMemo(() => {
     if (!activeResult) return 0;
 
@@ -180,9 +172,7 @@ export default function Summary() {
     return selected?.value ?? 0;
   }, [activeResult, activeTab, selectedLabel]);
 
-  /*
-   * Animate confidence circle with GSAP
-   */
+  /* Animate confidence circle with GSAP */
   useEffect(() => {
     if (!circleRef.current) return;
 
@@ -190,39 +180,37 @@ export default function Summary() {
 
     gsap.killTweensOf(circle);
 
-    gsap.fromTo(
-      circle,
-      {
-        attr: {
-          strokeDashoffset: 100,
-        },
-      },
-      {
-        attr: {
-          strokeDashoffset: 100 - selectedConfidence,
-        },
-        duration: 0.9,
-        ease: "power2.out",
-      }
-    );
+    gsap.to(circle, {
+      strokeDashoffset: 100 - selectedConfidence,
+      duration: 0.9,
+      ease: "power2.out",
+    });
+
+    return () => {
+      gsap.killTweensOf(circle);
+    };
   }, [selectedConfidence]);
 
-  /*
-   * Change active category
-   */
+  /* Change active category */
   const handleTabChange = (tab: Tab) => {
     setActiveTab(tab);
   };
 
-  /*
-   * Change selected confidence item
-   */
+  /* Change selected confidence item */
   const handleSelect = (label: string) => {
     setSelectedLabel((previous) => ({
       ...previous,
       [activeTab]: label,
     }));
   };
+
+  /* Uppercase the First Letter */
+  function titleCase(str: string) {
+    return str
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
 
   if (!data) {
     return (
@@ -235,13 +223,13 @@ export default function Summary() {
   }
 
   return (
-    <section className={style.page}>
+    <section className={style.summary}>
       {/* PAGE HEADING */}
-      <div className={style.page__heading}>
-        <p className={style.page__eyebrow}>A.I. ANALYSIS</p>
-        <h1 className={style.page__title}>DEMOGRAPHICS</h1>
-        <p className={style.page__subtitle}>
-          PREDICTED RACE &amp; AGE
+      <div className={style.page__top}>
+        <p className={style.page__step}>A.I. ANALYSIS</p>
+        <h1 className={style.step__title}>DEMOGRAPHICS</h1>
+        <p className={style.step__description}>
+          PREDICTED RACE & AGE
         </p>
       </div>
 
@@ -257,7 +245,7 @@ export default function Summary() {
             onClick={() => handleTabChange("race")}
           >
             <span className={style.summary__tabLabel}>
-              {data.race.predicted}
+              {titleCase(selectedLabel.race)}
             </span>
             <span className={style.summary__tabCategory}>RACE</span>
           </button>
@@ -270,7 +258,7 @@ export default function Summary() {
             onClick={() => handleTabChange("age")}
           >
             <span className={style.summary__tabLabel}>
-              {formatPrediction("age", data.age.predicted)}
+              {formatPrediction("age", selectedLabel.age)}
             </span>
             <span className={style.summary__tabCategory}>AGE</span>
           </button>
@@ -283,19 +271,18 @@ export default function Summary() {
             onClick={() => handleTabChange("gender")}
           >
             <span className={style.summary__tabLabel}>
-              {data.gender.predicted}
+              {titleCase(selectedLabel.gender)}
             </span>
             <span className={style.summary__tabCategory}>SEX</span>
           </button>
         </aside>
 
         {/* CENTER — MAIN PREDICTION */}
-        <main className={style.summary__middle}>
+        <div className={style.summary__middle}>
           <div className={style.summary__prediction}>
             <h2 className={style.summary__title}>
-              {formatPrediction(
-                activeTab,
-                activeResult?.predicted ?? ""
+              {titleCase(
+                formatPrediction(activeTab, selectedLabel[activeTab])
               )}
             </h2>
 
@@ -330,7 +317,7 @@ export default function Summary() {
               </div>
             </div>
           </div>
-        </main>
+        </div>
 
         {/* RIGHT — CONFIDENCE BREAKDOWN */}
         <aside className={style.summary__right}>
@@ -354,8 +341,10 @@ export default function Summary() {
                     onClick={() => handleSelect(item.label)}
                   >
                     <span className={style.summary__listLabel}>
-                      <span className={style.summary__diamond} />
-                      {formatPrediction(activeTab, item.label)}
+                      <span className={style.summary__diamond}>
+                        <span className={style.summary__subDiamond}/>
+                      </span>
+                      {titleCase(formatPrediction(activeTab, item.label))}
                     </span>
 
                     <span className={style.summary__listValue}>
