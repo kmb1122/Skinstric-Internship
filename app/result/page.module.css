@@ -150,6 +150,13 @@
   transform: translate(-50%, -50%) scale(0.9);
 }
 
+/* Disabled state for scan buttons (prevents clicks and indicates visually) */
+.scan__btn[disabled] {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* Analysis state */
 .result.preparing .scan,
 .result.success .scan {
@@ -312,6 +319,63 @@
 
 .hidden {
   display: none;
+}
+
+.camera__dialog {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: min(360px, 100%);
+  padding: 8px 0;
+  background-color: #1a1b1c;
+  color: #fcfcfc;
+  text-align: center;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+}
+
+.camera__dialogTitle {
+  margin: 0;
+  color: #fcfcfc;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 8px 0 48px 0;
+}
+
+.camera__dialogActions {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
+  width: 100%;
+  border-top: 1px solid #fcfcfc;
+}
+
+.camera__dialogBtn {
+  min-width: 48px;
+  padding: 0 16px;
+  border: none;
+  background: #1a1b1c;
+  color: #fcfcfc;
+  cursor: pointer;
+  font-family: var(--font-roobert);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.camra__denyBtn {
+  color: gray;
+}
+
+.camera__allowBtn {
+  font-weight: 600;
+}
+
+.camera__dialogButton:hover,
+.camera__dialogButton:focus-visible {
+  filter: brightness(0.7);
 }
 
 @keyframes bounce {

@@ -11,6 +11,7 @@ export default function Result() {
   const [status, setStatus] = useState("idle");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [isCameraDialogOpen, setIsCameraDialogOpen] = useState(false);
 
   // GSAP refs
   const innerRef1 = useRef(null);
@@ -229,7 +230,11 @@ export default function Result() {
             </h2>
           </div>
 
-          <button className={`${style["scan__btn"]} ${style["scan__btn__camera"]}`}>
+          <button
+            className={`${style["scan__btn"]} ${style["scan__btn__camera"]}`}
+            onClick={() => setIsCameraDialogOpen(true)}
+            aria-label="Open camera access dialog"
+          >
             <svg width="136" height="136" viewBox="0 0 136 136" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="67.9996" cy="67.9997" r="57.7857" stroke="#1A1B1C"/>
               <circle cx="68" cy="68" r="51" fill="#1A1B1C"/>
@@ -271,6 +276,8 @@ export default function Result() {
           <button
             className={`${style["scan__btn"]} ${style["scan__btn__gallery"]}`}
             onClick={() => fileInputRef.current?.click()}
+            disabled={isCameraDialogOpen}
+            aria-disabled={isCameraDialogOpen}
           >
             <svg width="136" height="136" viewBox="0 0 136 136" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="67.9996" cy="67.9997" r="57.7857" stroke="#1A1B1C"/>
@@ -327,6 +334,34 @@ export default function Result() {
         style={{ display: "none" }}
         onChange={handleFileSelect}
       />
+
+      {isCameraDialogOpen && (
+          <div
+            className={style.camera__dialog}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="camera-dialog-title"
+          >
+            <p id="camera-dialog-title" className={style.camera__dialogTitle}>
+              ALLOW A.I. TO ACCESS YOUR CAMERA
+            </p>
+
+            <div className={style.camera__dialogActions}>
+              <button
+                className={`${style["camera__dialogBtn"]} ${style["camera__denyBtn"]}`}
+                onClick={() => setIsCameraDialogOpen(false)}
+              >
+                DENY
+              </button>
+              <button
+                className={`${style["camera__dialogBtn"]} ${style["camera__allowBtn"]}`}
+                onClick={() => router.push("/camera")}
+              >
+                ALLOW
+              </button>
+            </div>
+          </div>
+      )}
     </section>
   )
 }
