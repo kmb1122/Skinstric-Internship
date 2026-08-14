@@ -19,7 +19,6 @@ export default function Testing() {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("idle"); 
-  // idle | processing | success
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -92,20 +91,20 @@ export default function Testing() {
 
   return (
     <section className={style.testing}>
-              {/* Rhombus */}
-        <div className={style.rhombus}>
-          <svg ref={innerRef} className={style.rhombus__inner} width="604" height="604" viewBox="0 0 604 604" fill="none">
-            <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
-          </svg>
+            {/* Rhombus */}
+      <div className={style.rhombus}>
+        <svg ref={innerRef} className={style.rhombus__inner} width="604" height="604" viewBox="0 0 604 604" fill="none">
+          <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
+        </svg>
 
-          <svg ref={middleRef} className={style.rhombus__middle} width="684" height="684" viewBox="0 0 684 684" fill="none">
-            <path opacity="0.6" d="M342 1L683 342L342 683L1 342L342 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
-          </svg>
+        <svg ref={middleRef} className={style.rhombus__middle} width="684" height="684" viewBox="0 0 684 684" fill="none">
+          <path opacity="0.6" d="M342 1L683 342L342 683L1 342L342 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
+        </svg>
 
-          <svg ref={outerRef} className={style.rhombus__outer} width="764" height="764" viewBox="0 0 764 764" fill="none">
-            <path opacity="0.3" d="M382 1L763 382L382 763L1 382L382 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
-          </svg>
-        </div>
+        <svg ref={outerRef} className={style.rhombus__outer} width="764" height="764" viewBox="0 0 764 764" fill="none">
+          <path opacity="0.3" d="M382 1L763 382L382 763L1 382L382 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
+        </svg>
+      </div>
 
       <p className={style.step}>TO START ANALYSIS</p>
 

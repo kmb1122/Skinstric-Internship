@@ -215,9 +215,15 @@ export default function Summary() {
   if (!data) {
     return (
       <section className={style.page}>
-        <div className={style.page__middle}>
-          <div className={style.loading}>Loading analysis...</div>
-        </div>
+          <div className={style.loading}>
+            <p>LOADING ANALYSIS</p>
+
+            <div className={style.dots}>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </div>
+          </div>
       </section>
     );
   }

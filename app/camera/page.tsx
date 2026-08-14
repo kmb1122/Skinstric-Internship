@@ -82,11 +82,24 @@ export default function Camera() {
           audio: false,
         });
 
-        if (!videoRef.current) return;
+        const video = videoRef.current;
 
-        videoRef.current.srcObject = stream;
+        if (!video) return;
 
-        await videoRef.current.play();
+        video.srcObject = stream;
+
+        await new Promise<void>((resolve) => {
+          video.onloadedmetadata = () => resolve();
+        });
+
+        try {
+          await video.play();
+        } catch (err) {
+          // Ignore play interruption caused by the video being unloaded
+          if ((err as DOMException)?.name !== "AbortError") {
+            throw err;
+          }
+        }
 
         setStatus("camera");
       } catch (err) {
@@ -111,8 +124,6 @@ export default function Camera() {
       return;
     }
 
-    setStatus("preparing");
-
     try {
       const canvas = document.createElement("canvas");
 
@@ -125,10 +136,23 @@ export default function Camera() {
         throw new Error("Could not create canvas context");
       }
 
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Capture the current frame
+      ctx.drawImage(
+        video,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
 
+      // Convert it to an image
       const base64 = canvas.toDataURL("image/jpeg", 0.9);
+
+      // Save the captured image
       setCapturedImage(base64);
+      
+      // Now show the processing UI
+      setStatus("preparing");
 
       const res = await fetch(
         "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
@@ -151,7 +175,16 @@ export default function Camera() {
 
       console.log(data);
 
+      // Persist analysis to session storage so other pages can read it
+      try {
+        sessionStorage.setItem("skinstric-analysis", JSON.stringify(data));
+      } catch (e) {
+        console.warn("Unable to write analysis to sessionStorage:", e);
+      }
+
+      // The capturedImage stays unchanged. Update UI state to success.
       setStatus("success");
+
     } catch (err) {
       console.error("Capture failed:", err);
       setStatus("camera");
@@ -160,22 +193,28 @@ export default function Camera() {
 
   return (
     <section className={`${style.camera} ${status === "camera" ? style.camera__active : ""}`}>
-      <div
-        className={`${style.camera__bg} ${
-          status === "camera" ? style.camera__bg__active : ""
-        }`}
-        style={
-          capturedImage
-            ? {
-                backgroundImage: `url(${capturedImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
-            : undefined
-        }
-      >
-        {!capturedImage && (
-          <video ref={videoRef} autoPlay playsInline muted />
+      <div className={style.camera__bg}>
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+          className={style.camera__video}
+          style={{
+            opacity: capturedImage ? 0 : 1,
+          }}
+        />
+
+        {capturedImage && (
+          <img
+            src={capturedImage}
+            alt="Captured photo"
+            className={style.camera__captured}
+          />
+        )}
+
+        {capturedImage && (
+          <div className={style.camera__overlay} />
         )}
       </div>
 
@@ -216,7 +255,7 @@ export default function Camera() {
         )}
 
         {status === "preparing" && (
-          <>
+          <div className={style.preparing}>
             <p>PREPARING YOUR ANALYSIS</p>
 
             <div className={style.dots}>
@@ -224,65 +263,59 @@ export default function Camera() {
               <span>.</span>
               <span>.</span>
             </div>
-          </>
+          </div>
         )}
 
         {status === "success" && (
           <p className={style.success}>
-            Thank you! Proceed to the next step.
+            Thank you!<br/>Proceed to the next step.
           </p>
         )}
       </div>
 
       {/* Suggestions */}
-      <div
-        className={style.suggestions}
-        style={{
-          display:
-            status === "preparing" || status === "success"
-              ? "none"
-              : undefined,
-        }}
-      >
-        <p className={style.suggestions__title}>
-          TO GET BETTER RESULTS MAKE SURE TO HAVE
-        </p>
+      {status !== "preparing" && status !== "success" && (
+        <div className={style.suggestions}>
+          <p className={style.suggestions__title}>
+            TO GET BETTER RESULTS MAKE SURE TO HAVE
+          </p>
 
-        <ul className={style.suggestions__list}>
-          <li className={style.suggestion__item}>
-            <span className={style.diamond}></span>
-            <p className={style.suggestion__text}>
-              NEUTRAL EXPRESSION
-            </p>
-          </li>
+          <ul className={style.suggestions__list}>
+            <li className={style.suggestion__item}>
+              <span className={style.diamond}></span>
+              <p className={style.suggestion__text}>
+                NEUTRAL EXPRESSION
+              </p>
+            </li>
 
-          <li className={style.suggestion__item}>
-            <span className={style.diamond}></span>
-            <p className={style.suggestion__text}>
-              FRONTAL POSE
-            </p>
-          </li>
+            <li className={style.suggestion__item}>
+              <span className={style.diamond}></span>
+              <p className={style.suggestion__text}>
+                FRONTAL POSE
+              </p>
+            </li>
 
-          <li className={style.suggestion__item}>
-            <span className={style.diamond}></span>
-            <p className={style.suggestion__text}>
-              ADEQUATE LIGHTING
-            </p>
-          </li>
-        </ul>
+            <li className={style.suggestion__item}>
+              <span className={style.diamond}></span>
+              <p className={style.suggestion__text}>
+                ADEQUATE LIGHTING
+              </p>
+            </li>
+          </ul>
+        </div>
+      )}
 
-        {/* Camera Button */}
-        {status === "camera" && (
-          <button className={style.camera__btn} onClick={handleCapture}>
-            <p className={style.camera__btn__text}>
-              TAKE PICTURE
-            </p>
-            <div className={style.camera__btn__circle}>
-              <TiCameraOutline className={style.camera__icon}/>
-            </div>
-          </button>
-        )}
-      </div>
+      {/* Camera Button */}
+      {status === "camera" && (
+        <button className={style.camera__btn} onClick={handleCapture}>
+          <p className={style.camera__btn__text}>
+            TAKE PICTURE
+          </p>
+          <div className={style.camera__btn__circle}>
+            <TiCameraOutline className={style.camera__icon}/>
+          </div>
+        </button>
+      )}
 
       <footer
         className={style.footer}

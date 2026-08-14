@@ -144,7 +144,6 @@ export default function Result() {
         console.log("API response:", data);
         sessionStorage.setItem("skinstric-analysis", JSON.stringify(data));
 
-        // Switch UI to success
         setStatus("success");
       } catch (error) {
         console.error("API error:", error);

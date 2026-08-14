@@ -425,6 +425,43 @@
   }
 }
 
+/* Loading State */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #1a1b1c;
+  margin: 120px auto;
+  text-align: center;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dots span {
+  animation: bounce 0.6s infinite alternate;
+  font-size: 48px;
+  line-height: 24px;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-6px); }
+}
+
 @media (max-width: 768px) {
   .summary {
     min-height: 100vh;
