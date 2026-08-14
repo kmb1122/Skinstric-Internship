@@ -102,7 +102,7 @@
   transform: rotate(45deg);
 }
 
-/* Camera */
+/* Camera & Background*/
 .camera__bg {
   position: absolute;
   inset: 0;
@@ -191,7 +191,7 @@
   border-radius: 50%;
 }
 
-/* Preparing */
+/* Preparing State*/
 .preparing {
   display: flex;
   flex-direction: column;

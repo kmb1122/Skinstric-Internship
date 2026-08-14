@@ -28,6 +28,7 @@ export default function Result() {
 
   const proceedRef = useRef(null);
 
+  // Rhombus Animations //
   useEffect(() => {
     const ctx = gsap.context(() => {
       // First rhombus set
@@ -96,6 +97,7 @@ export default function Result() {
     return () => ctx.revert();
   }, []);
 
+  // Proceed Button Animation //
   useEffect(() => {
     if (status === "success" && proceedRef.current) {
       gsap.fromTo(
@@ -106,6 +108,7 @@ export default function Result() {
     }
   }, [status]);
   
+  // Selecting Image //
   const handleFileSelect = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -156,8 +159,10 @@ export default function Result() {
 
   return (
     <section className={`${style.result} ${style[status]}`}>
+      {/* Top */}
       <p className={style.step}>TO START ANALYSIS</p>
 
+      {/* Preview */}
       <div className={style.preview__wrapper}>
         <p className={style.preview__title}>Preview</p>
         <figure className={style.preview__container}>
@@ -166,10 +171,13 @@ export default function Result() {
           )}
         </figure>
       </div>
-
+      
+      {/* Page Middle */}
       <div className={style.page__middle}>
       
+        {/* Loading States */}
         <div className={`${style.analysis__state} ${status !== "preparing" && status !== "success" ? style.hidden : ""}`}>
+          {/* Rhombus */}
           <div className={style.rhombus3}>
             <svg ref={innerRef3} className={style.rhombus__inner3} width="604" height="604" viewBox="0 0 604 604" fill="none">
               <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
@@ -203,6 +211,9 @@ export default function Result() {
           )}
         </div>
 
+      {/* Scan Buttons */}
+
+        {/* Camera Button */}
         <div className={`${style["scan"]} ${style["camera"]}`}>
           <div className={`${style["rhombus"]} ${style["rhombus__camera"]}`}>
             <svg ref={innerRef1} className={style.rhombus__inner} width="408" height="408" viewBox="0 0 408 408" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -247,6 +258,7 @@ export default function Result() {
           </button>
         </div>
       
+        {/* Gallery Button */}
         <div className={`${style["scan"]} ${style["gallery"]}`}>
           <div className={`${style["rhombus"]} ${style["rhombus__gallery"]}`}>
             <svg ref={innerRef2} className={style.rhombus__inner} width="408" height="408" viewBox="0 0 408 408" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -288,6 +300,7 @@ export default function Result() {
         </div>
       </div>
 
+      {/* Footer */}
       <footer className={style.footer}>
         {/* Back button */}
         <button
@@ -326,6 +339,7 @@ export default function Result() {
         )}
       </footer>
 
+      {/* IInput for Image File*/}
       <input
         type="file"
         accept="image/*"
@@ -334,6 +348,7 @@ export default function Result() {
         onChange={handleFileSelect}
       />
 
+      {/* Camera Permissions Box */}
       {isCameraDialogOpen && (
           <div
             className={style.camera__dialog}

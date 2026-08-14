@@ -7,6 +7,7 @@
   position: relative;
 }
 
+/* Page Top */
 .step {
   font-size: clamp(16px, 2px + .625vw, 14px);
   font-weight: 600;
@@ -41,6 +42,8 @@
   justify-content: center;
 }
 
+
+/* Middle Buttons */
 .btns__wrapper {
   position: relative;
   width: 45vh;
@@ -48,6 +51,7 @@
   margin-bottom: 48px;
 }
 
+/* Rhombuses */
 .rhombus__inner, .rhombus__middle, .rhombus__outer {
   opacity: 0;
   pointer-events: none;
@@ -91,6 +95,7 @@
   opacity: 1;
 }
 
+/* Middle Buttons */
 .btn {
   position: absolute;
   transform: rotate(45deg);
@@ -118,7 +123,7 @@
   color: #1a1b1c;
 }
 
-/* Top */
+/* Top Button*/
 .btn__1 {
   top: 0;
   left: 50%;
@@ -145,21 +150,21 @@
   cursor: not-allowed;
 } 
 
-/* Left */
+/* Left Button */
 .btn__2 {
   left: 0;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
 }
 
-/* Bottom */
+/* Bottom Button*/
 .btn__3 {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
 }
 
-/* Right */
+/* Right Button */
 .btn__4 {
   right: 0;
   top: 50%;

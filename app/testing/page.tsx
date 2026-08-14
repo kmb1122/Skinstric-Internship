@@ -14,12 +14,13 @@ export default function Testing() {
   const outerRef = useRef(null);
   const proceedRef = useRef(null);
 
-  // Interaction state
-  const [step, setStep] = useState(1); // 1 = name, 2 = location
+  // Interaction state //
+  const [step, setStep] = useState(1); 
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("idle"); 
 
+  // Rhombus Animations //
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to(innerRef.current, {
@@ -47,6 +48,7 @@ export default function Testing() {
     return () => ctx.revert();
   }, []);
 
+  // Proceed Button Animation //
   useEffect(() => {
     if (status === "success" && proceedRef.current) {
       gsap.fromTo(
@@ -57,7 +59,7 @@ export default function Testing() {
     }
   }, [status]);
 
-  // Handle input submission
+  // Handle input submission //
   const handleSubmit = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") return;
 

@@ -38,7 +38,7 @@
   object-fit: cover;
 }
 
-/* Step */
+/* Step @ the top*/
 .step {
   font-size: clamp(12px, 2px + .625vw, 14px);
   font-weight: 600;
@@ -68,8 +68,8 @@
 /* SCAN BLOCKS */
 .scan {
   position: relative;
-  width: 360px; /* fixed width for symmetry */
-  height: 360px; /* fixed height for symmetry */
+  width: 360px; 
+  height: 360px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,7 +78,7 @@
 .rhombus {
   position: absolute;
   top: 50%;
-  left: 50%;          /* ⭐ anchor to scan center */
+  left: 50%;          
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: -1;
@@ -150,14 +150,13 @@
   transform: translate(-50%, -50%) scale(0.9);
 }
 
-/* Disabled state for scan buttons (prevents clicks and indicates visually) */
 .scan__btn[disabled] {
   pointer-events: none;
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-/* Analysis state */
+/* Analysis State */
 .result.preparing .scan,
 .result.success .scan {
   display: none;
@@ -334,6 +333,7 @@
   transform: translateX(-50%);
 }
 
+/* Camera Permission Box */
 .camera__dialogTitle {
   margin: 0;
   color: #fcfcfc;

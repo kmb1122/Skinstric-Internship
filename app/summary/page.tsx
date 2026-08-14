@@ -36,6 +36,7 @@ type SelectedLabels = {
   gender: string;
 };
 
+// Most Likely Aspect in Category //
 function getTopPrediction(breakdown: BreakdownItem[]): string {
   if (!breakdown.length) return "";
 
@@ -44,6 +45,7 @@ function getTopPrediction(breakdown: BreakdownItem[]): string {
   ).label;
 }
 
+// Turn API Response into percentages //
 function transformApiResponse(api: AnalysisApiData): AnalysisData {
   const createBreakdown = (
     values: Record<string, number>
@@ -214,6 +216,7 @@ export default function Summary() {
 
   if (!data) {
     return (
+      /* Loading State */
       <section className={style.page}>
           <div className={style.loading}>
             <p>LOADING ANALYSIS</p>
@@ -230,7 +233,7 @@ export default function Summary() {
 
   return (
     <section className={style.summary}>
-      {/* PAGE HEADING */}
+      {/* Page Top*/}
       <div className={style.page__top}>
         <p className={style.page__step}>A.I. ANALYSIS</p>
         <h1 className={style.step__title}>DEMOGRAPHICS</h1>
@@ -239,9 +242,9 @@ export default function Summary() {
         </p>
       </div>
 
-      {/* MAIN CONTENT */}
+      {/* Page Middle */}
       <div className={style.page__middle}>
-        {/* LEFT — CATEGORY SELECTOR */}
+        {/* Left Column */}
         <aside className={style.summary__left}>
           <button
             type="button"
@@ -283,7 +286,7 @@ export default function Summary() {
           </button>
         </aside>
 
-        {/* CENTER — MAIN PREDICTION */}
+        {/* Center Column */}
         <div className={style.summary__middle}>
           <div className={style.summary__prediction}>
             <h2 className={style.summary__title}>
@@ -325,7 +328,7 @@ export default function Summary() {
           </div>
         </div>
 
-        {/* RIGHT — CONFIDENCE BREAKDOWN */}
+        {/* Right Column */}
         <aside className={style.summary__right}>
           <div className={style.summary__rightHeader}>
             <span>{activeTab.toUpperCase()}</span>
@@ -364,7 +367,7 @@ export default function Summary() {
         </aside>
       </div>
 
-      {/* FOOTER */}
+      {/* Footer */}
       <footer className={style.footer}>
         <button
           type="button"

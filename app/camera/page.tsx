@@ -18,6 +18,7 @@ export default function Camera() {
   const proceedRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
+  // Rhombus Animation //
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(innerRef1.current, {
@@ -60,6 +61,7 @@ export default function Camera() {
     return () => ctx.revert();
   }, []);
 
+  // Proceed Button Animation //
   useEffect(() => {
     if (status === "success" && proceedRef.current) {
       gsap.fromTo(
@@ -70,6 +72,7 @@ export default function Camera() {
     }
   }, [status]);
 
+  // Camera Video//
   useEffect(() => {
     let stream: MediaStream | null = null;
 
@@ -114,6 +117,7 @@ export default function Camera() {
     };
   }, []);
 
+  // Capture Image //
   const handleCapture = async () => {
     if (!videoRef.current) return;
 
@@ -193,6 +197,7 @@ export default function Camera() {
 
   return (
     <section className={`${style.camera} ${status === "camera" ? style.camera__active : ""}`}>
+      {/* Camera & Background */}
       <div className={style.camera__bg}>
         <video
           ref={videoRef}
@@ -218,6 +223,7 @@ export default function Camera() {
         )}
       </div>
 
+      {/* Page Middle */}
       <div
         className={style.page__middle}
         style={{ display: status === "camera" ? "none" : "flex" }}
@@ -237,6 +243,7 @@ export default function Camera() {
           </svg>
         </div>
 
+        {/*Loading States */}
         {status === "initial" && (
           <>
             <svg className={style.middle__img} width="136" height="136" viewBox="0 0 136 136" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +280,7 @@ export default function Camera() {
         )}
       </div>
 
-      {/* Suggestions */}
+      {/* Suggestion List */}
       {status !== "preparing" && status !== "success" && (
         <div className={style.suggestions}>
           <p className={style.suggestions__title}>
@@ -317,6 +324,7 @@ export default function Camera() {
         </button>
       )}
 
+      {/* Footer */}
       <footer
         className={style.footer}
         style={{ display: status === "initial" ? "none" : "flex" }}

@@ -7,6 +7,7 @@
   position: relative;
 }
 
+/* Page Top */
 .step {
   font-size: clamp(12px, 2px + .625vw, 14px);
   font-weight: 600;
@@ -18,6 +19,7 @@
   margin-top: 60px;
 }
 
+/* Page Middle */
 .page__middle {
   position: relative;
   width: 100%;
@@ -62,6 +64,7 @@ input::placeholder {
   opacity: 1;
 }
 
+/* Rhombuses */
 .rhombus {
   position: absolute;
   top: 50%;
@@ -230,6 +233,7 @@ input::placeholder {
   to   { transform: translateY(-6px); }
 }
 
+/* Success State */
 .success {
   font-size: 18px;
   font-weight: 500;

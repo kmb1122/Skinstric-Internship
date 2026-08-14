@@ -8,6 +8,8 @@ export default function Select() {
 
   return (
     <section className={style.select}>
+
+      {/* Page Top */}
       <div className={style.page__top}>
         <p className={style.step}>A.I. ANALYSIS</p>
         <p className={style.step__description}>
@@ -16,6 +18,7 @@ export default function Select() {
         </p>
       </div>
 
+      {/* Page Middle */}
       <div className={style.page__middle}>
 
         <div className={style.btns__wrapper}>
@@ -38,6 +41,7 @@ export default function Select() {
             <span>SKIN TYPE DETAILS</span>
           </button>
 
+          {/* Rhombuses */}
           <svg className={style.rhombus__inner} width="604" height="604" viewBox="0 0 604 604" fill="none">
             <path d="M302 1L603 302L302 603L1 302L302 1Z" stroke="#A0A4AB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0.1 8"/>
           </svg>
@@ -52,6 +56,7 @@ export default function Select() {
         </div>
       </div>
 
+      {/* Footer */}
       <footer className={style.footer}>
         {/* Back button */}
         <button

@@ -96,7 +96,6 @@
 
 
 /* Center Column */
-
 .summary__middle {
   position: relative;
   display: flex;
@@ -185,7 +184,6 @@
 
 
 /* Right Column */
-
 .summary__right {
   min-height: 520px;
   padding: 20px 20px;
