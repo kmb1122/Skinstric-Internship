@@ -1,6 +1,48 @@
 # Skinstric-Internship
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This project engineered the user interface for an AI skin analysis platform using Next.js and the OpenAI VisionAPI.
+
+## Live Demo
+
+[View Live Demo](https://skinstric-internship-peach.vercel.app/)
+
+## Screenshots
+
+<img width="1916" height="1093" alt="Skinstric" src="https://github.com/user-attachments/assets/b2d8c759-56b2-49b9-abc2-b9ff57289df0" />
+<img width="1890" height="1077" alt="image" src="https://github.com/user-attachments/assets/8bd4e82e-1c3a-4543-93e7-38e146b93b2d" />
+
+
+## Tech Stack
+
+- React
+- Next.js
+- TypeScript
+- GSAP Animations
+- CSS
+- HTML
+
+Add or remove technologies based on the project.
+
+## Key Features
+
+- CSS & GSAP Animations
+- Accessing a devices gallery
+- Accessing a devices camera
+- Sending an image to OpenAi Vision API and recieivng informaiton back
+
+
+## What I Built
+
+- CSS & GSAP Animations
+- Accessing a devices gallery
+- Accessing a devices camera
+- Sending an image to OpenAi Vision API and recieivng informaiton back
+- Different states such as a success state and processing state
+- Display of data recieved from API
+
+## Technical Decisions
+
+I chose a micture of CSS and GSAP aniamtions based on the complexity of the animation, when the animation was taking place, and what pieces of TS and CSS the animation affected.
 
 ## Getting Started
 
@@ -20,19 +62,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Known Limitations
 
-## Learn More
+Only displayes the demegraphic prediction from the OpenAI. The other three features have not been built.
 
-To learn more about Next.js, take a look at the following resources:
+## Future Improvements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create the features:
+- Cosmetic Concerns
+- Weather
+- Ckin Type Details
