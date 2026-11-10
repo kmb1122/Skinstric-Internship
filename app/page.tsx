@@ -9,7 +9,6 @@ export default function Home() {
   const leftWrapperRef = useRef<HTMLDivElement | null>(null);
   const rightWrapperRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const titleWidth = titleRef.current?.offsetWidth ?? 0;
   const router = useRouter();
 
   useEffect(() => {
@@ -28,19 +27,17 @@ export default function Home() {
           <button
             className={`${style.side__btn} ${style.side__btn__left}`}
             onMouseEnter={() => {
-              const viewportWidth = window.innerWidth;
-              const titleWidth = titleRef.current!.offsetWidth;
-              const distance = (viewportWidth / 2) - (titleWidth / 2) - 32;
+              const title = titleRef.current!;
+              title.classList.add(style.titleRight);
+              const currentX = Number(gsap.getProperty(title, "x"));
+              const distance = window.innerWidth - title.getBoundingClientRect().right - 32;
 
               gsap.to(rightWrapperRef.current, { opacity: 0, duration: 0.3 });
 
-              gsap.to(titleRef.current, {
-                x: distance,              
+              gsap.to(title, {
+                x: currentX + distance,
                 duration: 0.8,
                 ease: "power2.out",
-                onStart: () => {
-                  titleRef.current!.classList.add(style.titleRight);
-                }
               });
             }}
 
@@ -63,7 +60,7 @@ export default function Home() {
               <div className={`${style["triangle"]} ${style["triangle__left"]}`}/>
             </div>
             <p className={`${style["side__btn__text"]} ${style["side__btn__text__left"]}`}>
-              DICOVER A.I.
+              DISCOVER A.I.
             </p>
           </button>
           <div className={`${style["rhombus"]} ${style["rhombus__left"]}`}>
@@ -73,7 +70,11 @@ export default function Home() {
           </div>
         </div>
 
-        <h1 ref={titleRef} className={style.title}>Sophisticated skincare</h1>
+        <h1 ref={titleRef} className={style.title}>
+          Sophisticated
+          <br />
+          skincare
+        </h1>
 
         <div ref={rightWrapperRef} className={style.button__wrapper__right}>
           <button

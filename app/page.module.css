@@ -14,7 +14,7 @@
 }
 
 .title {
-  width: 480px;
+  width: max-content;
   font-weight: 300;
   font-size: 92px;
   line-height: 92px;
@@ -33,7 +33,6 @@
 
 .titleRight {
   text-align: right;
-  padding-right: 32px;
 }
 
 .rhombus {
@@ -240,6 +239,7 @@
   }
 
   .title  {
+    width: min(100%, 480px);
     font-size: 60px;
     line-height: 60px;
     text-align: center;
@@ -319,8 +319,15 @@
 }
 
 @media (max-width: 600px) {
+  .page {
+    height: auto;
+    min-height: 100svh;
+    box-sizing: border-box;
+    padding: 24px 0;
+  }
+
   .main {
-    gap: 80px;
+    gap: 0;
     padding-top: 56px;
   }
 
@@ -329,6 +336,15 @@
   }
 
   .description {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    width: min(316px, calc(100vw - 48px));
+    height: auto;
+    max-width: none;
+    margin: 48px 0 0;
+    transform: none;
     font-size: 14px;
   }
 
